@@ -26,10 +26,22 @@ class BinaryGame(Game):
             base10 = randint(1, 100)
             prompt = 'Переведите число %d в двоичную систему:' % (base10)
             userResult = input(prompt)
+            while True:
+                try:
+                    answer = int(userResult, base=2)
+                    if answer == base10:
+                        print('Ответ верный')
+                        score+=1
+                        break
+                    else:
+                        print("Ответ неверный. Верный ответ - {:b}.".format(base10))
+                        break
+                except:
+                    userResult = input('Введено некорректное значение. Попробуйте снова:')
+        return score
 
-t1 = BinaryGame(2)
 
-t1.generateQuestions()
+
 
 
 
